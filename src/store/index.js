@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     // 1. Create a state variable to hold the products
-    products: [], //IMPORTANT
+    products:null, //IMPORTANT
     profit:[],
     name:"Michael codesmiles",
     age: 30,
@@ -11,9 +11,12 @@ export default createStore({
     
   },
   getters: {
-    ADD_PROFIT(state) { //IMPORTANT
-      state.products.forEach(product => {
-        product.price = product.price + (product.price*2.2)/100;
+   PRODUCT_WITH_PROFIT(state) { //IMPORTANT
+      return state.products.map(product => {
+        return {
+          ...product,
+          price: product.price + (product.price*2.2)/100
+        }
       })
     }
   },
@@ -22,7 +25,7 @@ export default createStore({
       state.myNumbers.push(numberToAdd);
     },
     PUSH_PRODUCT(state, product) { //IMPORTANT
-      state.products.push(product);
+      state.products = product;
     },
     
   },
