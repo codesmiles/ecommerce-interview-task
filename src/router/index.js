@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import GetProductViewVue from "@/views/GetProductView.vue";
 import AddProductVue from "@/views/AddProduct.vue";
 import GetOneProductView from "@/views/GetOneProduct.vue";
+import Cart from "@/views/Cart.vue";
 const routes = [
   // {
   //   path: '/',
@@ -15,7 +16,11 @@ const routes = [
     name: "allProducts",
     component: GetProductViewVue,
   },
-
+  {
+    path: "/cart",
+    name: "cart",
+    component: Cart,
+  },
   {
     path: "/add",
     name: "add-product",

@@ -20,7 +20,10 @@ export default createStore({
       state.products.push(productToAdd);
     },
     ADD_TO_CART(state, singleProduct) {
-      state.cart.push(singleProduct);
+      const singleItem = state.products.filter(item=>item.id === singleProduct)
+      state.cart.push(singleItem[0]);
+      console.log(state.cart);
+      
     },
    
 
@@ -32,9 +35,6 @@ export default createStore({
     },
     ADD_PRODUCT_ASYNC(context, productToAdd) {
       context.commit('ADD_PRODUCT', productToAdd);
-    },
-    ADD_TO_CART_ASYNC(context, singleProduct) {
-      context.commit('ADD_TO_CART', singleProduct);
     },
     // async fetchUsers({ commit }) {
     //   try {
