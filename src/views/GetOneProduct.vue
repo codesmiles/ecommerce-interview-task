@@ -1,0 +1,72 @@
+<template >
+    <div>
+        <!-- <h1>title:{{singleProduct.title}}</h1>
+        <p>description:{{singleProduct.description}}</p>
+        <p>Price:{{singleProduct.price}}</p>
+        <p>Category:{{singleProduct.category}}</p> -->
+        <!-- <img :src="singleProduct.image" alt="product image"> -->
+        <!-- <router-link :to="/cart">
+            Add to cart
+        </router-link> -->
+
+        <h1 class="uppercase text-4xl text-center">SINGLE PRODUCT</h1>
+        <!-- display single product -->
+        <div class="max-w-4xl mx-auto my-20">
+            <router-link :to="{name:'allProducts'}" class="text-blue-500 hover:text-blue-800 capitalize text-2xl my-4">go back</router-link>
+            
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-1/2 px-4 mb-10">
+                    <img class="w-full h-auto" :src="singleProduct.image" alt="product image">
+                </div>
+                <div class="w-1/2 px-4 mb-10">
+                    <div class="mb-5">
+                        <h1 class="text-2xl font-semibold mb-2">{{singleProduct.title}}</h1>
+                        <p class="text-gray-600">{{singleProduct.description}}</p>
+                    </div>
+                    <div class="mb-5">
+                        <h1 class="text-2xl font-semibold mb-2">${{singleProduct.price}}</h1>
+                    </div>
+                    <div class="mb-5">
+                        <h1 class="text-2xl font-semibold mb-2 capitalize">category: {{singleProduct.category}}</h1>
+                    </div>
+                    <div class="mb-5">
+                        <router-link to="/cart">
+                            <button class="w-full py-3 px-4 bg-gray-800 text-gray-100 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Add to cart</button>
+                        </router-link>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+           
+    </div>
+</template>
+<script>
+import { mapState } from "vuex";
+export default {
+    name: "GetOneProduct",
+    data() {
+        return {
+         singleProduct: {},
+         
+        };
+    },
+    computed: {
+        ...mapState({
+            products: (state) => state.products, //IMPORTANT
+        }),
+    },
+    mounted() {
+        this.fetchProduct();
+    },
+    methods: {
+      fetchProduct() {
+        const id = this.$route.params.id;
+        const productData = this.products.filter((product) => product.id == id);
+        this.singleProduct = productData[0];
+        console.log(this.singleProduct);
+      },  
+    },
+
+}
+</script>

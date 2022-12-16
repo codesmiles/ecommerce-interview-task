@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import GetProductViewVue from "@/views/GetProductView.vue";
 import AddProductVue from "@/views/AddProduct.vue";
+import GetOneProductView from "@/views/GetOneProduct.vue";
 const routes = [
   // {
   //   path: '/',
@@ -11,7 +12,7 @@ const routes = [
 
   {
     path: "/",
-    name: "all-products",
+    name: "allProducts",
     component: GetProductViewVue,
   },
 
@@ -30,6 +31,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
+  {
+    path: "/product/:id",
+    name: "singleProduct",
+    component: GetOneProductView
+  }
 ];
 
 const router = createRouter({
