@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="uppercase text-4xl text-center">ADD PRODUCT</h1>
-    <form class="w-4/5 mx-auto">
+    <form class="w-4/5 mx-auto" @submit="SubmitForm">
       <!-- input fields -->
       <div v-for="(field, index) in inputFieldData" :key="index" class="">
         <addProductComp
@@ -22,11 +22,12 @@
           name="myImage"
           accept="image/png, image/gif, image/jpeg"
           id="img"
-          @change="image"
+          @change="onImageSelected"
           class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
         />
       </div>
 
+      
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
@@ -55,7 +56,7 @@ export default {
         {
           labelFor: "price",
           labelContent: "price",
-          inputType: "text",
+          inputType: "number",
           inputModel: "price",
         },
         {
@@ -71,12 +72,30 @@ export default {
           inputModel: "description",
         },
       ],
+      selectedImage: null,
     };
   },
   methods: {
-    image(e) {
-      this.image = e.target.files[0];
-      console.log(this.image);
+    onImageSelected(e) {
+        return this.selectedImage = e.target.files[0];
+    },
+    SubmitForm(e) {
+        e.preventDefault();
+      const formData = new FormData();
+        formData.append("title", this.inputFieldData[0].inputModel);
+        formData.append("price", this.inputFieldData[1].inputModel);
+        formData.append("category", this.inputFieldData[2].inputModel);
+        formData.append("description", this.inputFieldData[3].inputModel);
+      formData.append("image", this.selectedImage, this.selectedImage.name);
+        
+      
+        console.log(formData.get("image"));
+        console.log(formData.get("title"));
+        console.log(formData.get("price"));
+        console.log(formData.get("category"));
+        console.log(formData.get("description"));
+
+    //   this.$store.dispatch("ADD_PRODUCT", formData);
     },
   },
 };
