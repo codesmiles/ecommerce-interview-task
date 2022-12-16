@@ -142,7 +142,7 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapState,mapGetters } from "vuex";
 
 export default {
   name: "all-products",
@@ -162,11 +162,16 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+    
   },
   computed: {
     ...mapState({
       products: (state) => state.products, //IMPORTANT
+    //   productsFetched: (state) => state.productsFetched,
     }),
+    // ...mapGetters({
+    //     getProductsFetch: "getproductFetched",
+    // }),
   },
 };
 </script>
