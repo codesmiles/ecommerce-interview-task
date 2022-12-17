@@ -7,11 +7,14 @@
     <h1 class="text-4xl font-bold uppercase text-center">STARRY COLLECTIONS</h1>
     <div>
       <span
-        class="text-2xl font-bold uppercase text-center"
+        class="text-2xl font-bold uppercase text-center cursor-pointer relative"
         @click="handleClick"
       >
         Cart
         <span> ({{ cart.length }}) </span>
+    
+          <span v-show="!dropdown">&#8681;</span>
+          <span v-show="dropdown">&#8679;	</span>
       </span>
       <div
         v-show="dropdown"
@@ -21,17 +24,21 @@
           <p class="text-gray-400">No items in cart</p>
         </div>
         <div v-else>
+          <p class="flex justify-center font-light text-red-400 text-xs my-2">double click to remove items</p>
           <div
             v-for="item in cart"
             :key="item.id"
-            class="ml-4 mb-4 flex justify-between"
+            class="ml-4 mb-4 flex justify-between cursor-pointer"
+            @dblclick="removeFromCart(item.id)"
           >
             <p class="text-gray-700 font-bold">
               {{ item.title.substring(0, 18) }}...
             </p>
             <p class="text-gray-400">${{ item.price }}</p>
           </div>
-          <router-link to="/cart" class="flex text-blue-500 justify-center font-semibold">See More</router-link>
+          <div class="flex text-blue-500 justify-center font-semibold">
+            <router-link to="/cart" >See More</router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -57,6 +64,9 @@ export default {
   methods: {
     handleClick() {
       this.dropdown = !this.dropdown;
+    },
+    removeFromCart(id) {
+      this.$store.commit("REMOVE_FROM_CART", id);
     },
   },
 };

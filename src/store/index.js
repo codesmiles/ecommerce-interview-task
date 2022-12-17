@@ -33,6 +33,9 @@ export default createStore({
         return state.products;
       }
       
+      },
+      REMOVE_FROM_CART(state, id) {
+        state.cart = state.cart.filter(item => item.id !== id);
       }
   },
   actions: {
