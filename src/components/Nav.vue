@@ -1,8 +1,6 @@
 <template>
-  <div class="flex justify-around py-2 bg-gray-800 text-yellow-50">
-    <h1 class="text-4xl font-bold uppercase text-center ">
-      STARRY COLLECTIONS
-    </h1>
+  <div class="flex justify-around py-2 bg-gray-800 text-yellow-50 sticky top-0 w-full">
+    <h1 class="text-4xl font-bold uppercase text-center">STARRY COLLECTIONS</h1>
     <div>
       <span
         class="text-2xl font-bold uppercase text-center cursor-pointer relative"
@@ -14,6 +12,7 @@
         <span v-show="!dropdown">&#8681;</span>
         <span v-show="dropdown">&#8679; </span>
       </span>
+      <!--                                  DROPDOWN MENU START                                          -->
       <div
         v-show="dropdown"
         class="absolute bg-white w-72 rounded-lg shadow-lg p-4"
@@ -25,7 +24,7 @@
           <p class="flex justify-center font-light text-red-400 text-xs my-2">
             double click to remove items
           </p>
-          
+
           <div
             v-for="item in cart"
             :key="item.id"
@@ -42,6 +41,7 @@
           </div>
         </div>
       </div>
+      <!--                            DROPDOWN MENU END                                               -->
     </div>
   </div>
 </template>
