@@ -19,7 +19,7 @@ export default createStore({
     ADD_TO_CART(state, singleProduct) {
       const singleItem = state.products.filter(item=>item.id === singleProduct)
       state.cart.push(singleItem[0]);
-      console.log(state.cart);
+      // console.log(state.cart);
     },
     SEARCH_PRODUCTS(state, search) {
       state.products = state.products.filter(item => item.title.toLowerCase().includes(search.toLowerCase()));
