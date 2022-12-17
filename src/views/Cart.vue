@@ -1,11 +1,19 @@
 <template>
     <div>
-        <h1 class="">Cart</h1>
-        <div v-for="(item, index) in cart" :key="index">
-            <p>{{item.title}}</p>
+        <h1 class="uppercase text-4xl font-bold my-5">Your cart</h1>
+        <div v-for="item in cart" :key="item.id">
+            <div class="grid grid-cols-3">
+                <p class="text-2xl font-bold uppercase justify-self-center"> {{item.title}}</p>
+                <p class="text-2xl font-bold uppercase justify-self-center">$ {{item.price}}</p>
+                <p class="text-1xl font-bold uppercase cursor-pointer justify-self-center text-red-400" @click="removeItem(item.id)">&#10060; remove</p>
+            </div>
+
+
+
+            <!-- <p>{{item.title}}</p>
             <p>{{item.price}}</p>
             <p>{{item.category}}</p>
-            <p>{{item.description}}</p>
+            <p>{{item.description}}</p> -->
         </div>
     </div>
 </template>
@@ -19,7 +27,10 @@ export default {
         }
     },
     methods: {
-        
+        removeItem(id){
+            return this.$store.commit('REMOVE_FROM_CART', id)
+            // console.log(index)
+        }
     },
     computed: {
         ...mapState({
