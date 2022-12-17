@@ -1,16 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 import GetProductViewVue from "@/views/GetProductView.vue";
 import AddProductVue from "@/views/AddProduct.vue";
 import GetOneProductView from "@/views/GetOneProduct.vue";
 import Cart from "@/views/Cart.vue";
+import modal from "@/components/modal.vue";
+import PageNotFoundVue from "@/views/PageNotFound.vue";
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },
-
   {
     path: "/",
     name: "allProducts",
@@ -21,12 +16,11 @@ const routes = [
     name: "cart",
     component: Cart,
   },
-  {
-    path: "/add",
-    name: "add-product",
-    component: AddProductVue,
-  },
-
+  // {
+  //   path: "/add",
+  //   name: "add-product",
+  //   component: AddProductVue,
+  // },
   {
     path: "/about",
     name: "about",
@@ -40,6 +34,16 @@ const routes = [
     path: "/product/:id",
     name: "singleProduct",
     component: GetOneProductView
+  },
+  {
+    name: "modal",
+    path: "/modal",
+    component: modal,
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "PageNotFound",
+    component: PageNotFoundVue,
   }
 ];
 

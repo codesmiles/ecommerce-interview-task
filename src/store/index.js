@@ -16,44 +16,30 @@ export default createStore({
       });
       state.products = product;
     },
-    ADD_PRODUCT(state, productToAdd) {
-      state.products.push(productToAdd);
-    },
     ADD_TO_CART(state, singleProduct) {
       const singleItem = state.products.filter(item=>item.id === singleProduct)
       state.cart.push(singleItem[0]);
       console.log(state.cart);
-      
     },
-   
-
+    SEARCH_PRODUCTS(state, search) {
+      state.products = state.products.filter(item => item.title.toLowerCase().includes(search.toLowerCase()));
+      if(search === '' || state.products.length === 0) {
+        axios.get('https://fakestoreapi.com/products')
+        .then(response => {
+          state.products = response.data;
+        })
+      }
+      else {
+        return state.products;
+      }
+      
+      }
   },
   actions: {
     
     FETCH_AND_PUSH_PRODUCT(context, product) { //IMPORTANT
       context.commit('PUSH_PRODUCTS', product);      
     },
-    ADD_PRODUCT_ASYNC(context, productToAdd) {
-      context.commit('ADD_PRODUCT', productToAdd);
-    },
-    // async fetchUsers({ commit }) {
-    //   try {
-    //     const d = await axios.get(
-    //       "https://fakestoreapi.com/products"
-    //     );
-    //     commit("SET_PRODUCTS", d.data);
-    //   } catch (error) {
-    //     alert(error);
-    //     console.log(error);
-    //   }
-    // },
-
-    // FETCH_PRODUCT(context) { //IMPORTANT
-    //   axios.get('https://fakestoreapi.com/products')
-    //   .then(response => {
-    //     context.commit('ADD_PRODUCT_ASYNC', response.data);
-    //   })
-    // }
   },
   modules: {
   }

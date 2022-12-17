@@ -1,15 +1,5 @@
 <template>
   <div>
-    <!-- <h1>title:{{singleProduct.title}}</h1>
-        <p>description:{{singleProduct.description}}</p>
-        <p>Price:{{singleProduct.price}}</p>
-        <p>Category:{{singleProduct.category}}</p> -->
-    <!-- <img :src="singleProduct.image" alt="product image"> -->
-    <!-- <router-link :to="/cart">
-            Add to cart
-        </router-link> -->
-
-    <h1 class="uppercase text-4xl text-center">SINGLE PRODUCT</h1>
     <!-- display single product -->
     <div class="max-w-4xl mx-auto my-20">
       <router-link
@@ -47,6 +37,7 @@
             <router-link to="/cart">
               <button
                 class="w-full py-3 px-4 bg-gray-800 text-gray-100 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                @click="handleCart(singleProduct.id)"
               >
                 Add to cart
               </button>
@@ -81,6 +72,10 @@ export default {
       const productData = this.products.filter((product) => product.id == id);
       this.singleProduct = productData[0];
       console.log(this.singleProduct);
+    },
+    handleCart(productId) {
+      this.$store.commit("ADD_TO_CART", productId);
+      // this.$router.push("/cart");
     },
   },
 };
