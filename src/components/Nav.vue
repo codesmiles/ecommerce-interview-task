@@ -25,11 +25,12 @@
           <p class="flex justify-center font-light text-red-400 text-xs my-2">
             double click to remove items
           </p>
+          
           <div
-            v-for="(item,index) in cart"
-            :key="index"
+            v-for="item in cart"
+            :key="item.id"
             class="ml-4 mb-4 flex justify-between cursor-pointer"
-            @dblclick="removeFromCart(index)"
+            @dblclick="removeFromCart(item.id)"
           >
             <p class="text-gray-700 font-bold">
               {{ item.title.substring(0, 18) }}...
@@ -63,8 +64,8 @@ export default {
     handleClick() {
       this.dropdown = !this.dropdown;
     },
-    removeFromCart(index) {
-      this.$store.commit("REMOVE_FROM_CART", index);
+    removeFromCart(id) {
+      this.$store.commit("REMOVE_FROM_CART", id);
     },
   },
 };
