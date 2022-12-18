@@ -12,7 +12,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <div v-for="product in products" :key="product.id">
         <div
-          class="mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
+          class="mx-auto max-w-sm bg-white borde  r border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
         >
           <img
             class="rounded-t-lg h-60 mx-auto"
@@ -22,7 +22,7 @@
 
           <div class="p-5">
             <h5
-              class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"
             >
               {{ product.title }}
             </h5>

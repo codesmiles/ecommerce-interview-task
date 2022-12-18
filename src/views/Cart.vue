@@ -5,7 +5,7 @@
             <div class="grid grid-cols-3">
                 <p class="text-2xl font-bold uppercase justify-self-center"> {{item.title}}</p>
                 <p class="text-2xl font-bold uppercase justify-self-center">$ {{item.price}}</p>
-                <p class="text-1xl font-bold uppercase cursor-pointer justify-self-center text-red-400" @click="removeItem(item.id)">&#10060; remove</p>
+                <p class="text-1xl font-bold uppercase cursor-pointer justify-self-center text-red-400" @click="removeItem(index)">&#10060; remove</p>
             </div>
 
 
@@ -29,6 +29,7 @@ export default {
     methods: {
         removeItem(index){
             this.$store.commit('REMOVE_FROM_CART', index)
+            // console.log(index)
         }
     },
     computed: {
