@@ -1,12 +1,16 @@
 <template>
   <div class="flex justify-around py-2 bg-gray-800 text-yellow-50 sticky top-0 w-full">
-    <h1 class="text-4xl font-bold uppercase text-center">STARRY COLLECTIONS</h1>
-    <div>
+   <router-link to="/">
+       <h1 class="md:text-4xl text-lg font-bold uppercase text-center">STARRY COLLECTIONS</h1>
+   </router-link>
+    <div class="">
       <span
-        class="text-2xl font-bold uppercase text-center cursor-pointer relative"
+        class="text-2xl font-bold uppercase text-center cursor-pointer"
         @click="handleClick"
       >
-        Cart
+        <span class="hidden md:inline">
+            Cart
+        </span>
         <span> ({{ cart.length }}) </span>
 
         <span v-show="!dropdown">&#8681;</span>
@@ -15,7 +19,7 @@
       <!--                                  DROPDOWN MENU START                                          -->
       <div
         v-show="dropdown"
-        class="absolute bg-white w-72 rounded-lg shadow-lg p-4"
+        class="absolute bg-white w-64 rounded-lg shadow-lg p-4 top-14 right-5"
       >
         <div v-if="cart.length === 0" class="text-center">
           <p class="text-gray-400">No items in cart</p>
