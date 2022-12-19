@@ -67,15 +67,15 @@
                 product.rating.rate
               }}</span>
             </div>
-            <div class="capitalize my-3">
-              <span class="text-lg font-bold tracking-tight text-gray-700 dark:text-white"
+            <div class="capitalize my-3 dark:text-white">
+              <span class="text-lg font-bold tracking-tight text-gray-700 "
                 >Category: </span
               >{{ product.category }}
             </div>
 
             <div class="flex justify-between">
-              <p>
-                <b class="text-lg font-bold tracking-tight text-gray-700 dark:text-white"
+              <p class="dark:text-white text-gray-700">
+                <b class="text-lg font-bold tracking-tight"
                   >Price: </b
                 >${{ product.price }}
               </p>
