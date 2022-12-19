@@ -1,5 +1,14 @@
 <template>
   <div>
+    <!-- MODAL -->
+    <Modal
+      :title="Notification.title"
+      :content="Notification.message"
+      :isOpen="Notification.show"
+      @toggle="toggleModal"
+    />
+    <!-- MODAL -->
+
     <div class="w-4/5 mx-auto">
       <input
         type="text"
@@ -12,7 +21,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <div v-for="product in products" :key="product.id">
         <div
-          class="mx-auto max-w-sm bg-white borde  r border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
+          class="mx-auto max-w-sm bg-white borde r border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
         >
           <img
             class="rounded-t-lg h-60 mx-auto"
@@ -27,7 +36,9 @@
               {{ product.title }}
             </h5>
 
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <p
+              class="mb-3 font-normal text-gray-700 dark:text-gray-400 capitalize"
+            >
               {{ product.description.substring(0, 99) }}...<router-link
                 :to="{ name: 'singleProduct', params: { id: product.id } }"
                 class="text-blue-500 font-bold"
@@ -39,8 +50,8 @@
                 Rating:
               </span>
               <svg
-              v-for="index in Math.round(product.rating.rate)" 
-              :key="index" 
+                v-for="index in Math.round(product.rating.rate)"
+                :key="index"
                 aria-hidden="true"
                 class="w-5 h-5 text-yellow-300"
                 fill="currentColor"
@@ -52,15 +63,15 @@
                   d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
                 ></path>
               </svg>
-              <span class="ml-2 text-sm text-gray-600 dark:text-gray-400"
-                >{{ product.rating.rate }}</span>
+              <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{
+                product.rating.rate
+              }}</span>
             </div>
             <div class="capitalize my-3">
               <span class="text-lg font-bold tracking-tight text-gray-900"
                 >Category: </span
               >{{ product.category }}
             </div>
-
 
             <div class="flex justify-between">
               <p>
@@ -93,24 +104,21 @@
           </div>
         </div>
       </div>
-      <!-- REFERENCE -->
-      <!-- <h2>{{ product.title }}</h2>
-    <p>{{ product.price }}</p>
-    <p>{{ product.category }}</p>
-    <p>{{ product.description }}</p>
-    <img :src="product.image" alt="product image" /> -->
     </div>
   </div>
 </template>
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 import { ref } from "vue";
+import Modal from "@/components/Modal.vue";
+
 export default {
   name: "all-products",
+  components: { Modal },
   data() {
     return {
       url: `https://fakestoreapi.com/products`,
-      search: ref(''),
+      search: ref(""),
     };
   },
   mounted() {
@@ -119,7 +127,6 @@ export default {
       .then((res) => {
         // how to store asynchronous data in actions
         this.$store.dispatch("FETCH_AND_PUSH_PRODUCT", res.data);
-        console.log(this.$store.state.products);
       })
       .catch((error) => {
         console.log(error);
@@ -128,18 +135,21 @@ export default {
   methods: {
     handleCart(productId) {
       this.$store.commit("ADD_TO_CART", productId);
+      
       // this.$router.push("/cart");
     },
     searchProducts() {
       this.$store.commit("SEARCH_PRODUCTS", this.search);
     },
+    toggleModal() {
+      this.Notification.show = !this.Notification.show;
+    },
   },
   computed: {
     ...mapState({
       products: (state) => state.products, //IMPORTANT
-    
+      Notification: (state) => state.Notification,
     }),
-    
   },
 };
 </script>

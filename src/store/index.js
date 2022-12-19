@@ -6,6 +6,11 @@ export default createStore({
     // 1. Create a state variable to hold the products
     products: [], //IMPORTANT
     cart: [],
+    Notification:{
+      show:false,
+      title:"",
+      message:""
+    }
   },
   getters: {},
   mutations: {
@@ -25,12 +30,21 @@ export default createStore({
       
       if(!exists||state.cart.length===0) {
         state.cart.push(singleItem[0]);
+
+        state.Notification.show=true;
+        state.Notification.title="SUCCESS";
+        state.Notification.message="Item added to cart";
+
+       
+
       }
       else {
-        console.log("Item already in cart");
+        state.Notification.show=true;
+        state.Notification.title="ERROR";
+        state.Notification.message="Item already in cart";
+
+       
       }
-      // state.cart.push(singleItem[0]);
-      
     },
     SEARCH_PRODUCTS(state, search) {
       state.products = state.products.filter((item) =>
@@ -46,6 +60,11 @@ export default createStore({
     },
     REMOVE_FROM_CART(state, index) {
       state.cart = state.cart.filter((item, i) => i !== index);
+      state.Notification.show=true;
+      state.Notification.title="SUCCESS";
+      state.Notification.message="Item removed from cart";
+      
+     
     },
   },
   actions: {

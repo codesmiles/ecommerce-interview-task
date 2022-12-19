@@ -1,5 +1,14 @@
 <template>
   <div>
+    <!-- MODAL -->
+    <ModalVue
+      :title="Notification.title"
+      :content="Notification.message"
+      :isOpen="Notification.show"
+      @toggle="toggleModal"
+    />
+    <!-- MODAL -->
+
     <!-- display single product -->
     <div class="max-w-4xl mx-auto my-20">
       <router-link
@@ -34,14 +43,12 @@
             </h1>
           </div>
           <div class="mb-5">
-            <router-link to="/cart">
-              <button
-                class="w-full py-3 px-4 bg-gray-800 text-gray-100 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-                @click="handleCart(singleProduct.id)"
-              >
-                Add to cart
-              </button>
-            </router-link>
+            <button
+              class="w-full py-3 px-4 bg-gray-800 text-gray-100 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+              @click="handleCart(singleProduct.id)"
+            >
+              Add to cart
+            </button>
           </div>
         </div>
         -->
@@ -51,8 +58,13 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import ModalVue from "@/components/Modal.vue";
+
 export default {
   name: "GetOneProduct",
+  components: {
+    ModalVue,
+  },
   data() {
     return {
       singleProduct: {},
@@ -61,6 +73,7 @@ export default {
   computed: {
     ...mapState({
       products: (state) => state.products, //IMPORTANT
+      Notification: (state) => state.Notification,
     }),
   },
   mounted() {
@@ -71,11 +84,12 @@ export default {
       const id = this.$route.params.id;
       const productData = this.products.filter((product) => product.id == id);
       this.singleProduct = productData[0];
-      console.log(this.singleProduct);
     },
     handleCart(productId) {
       this.$store.commit("ADD_TO_CART", productId);
-      // this.$router.push("/cart");
+    },
+    toggleModal() {
+      this.Notification.show = !this.Notification.show;
     },
   },
 };

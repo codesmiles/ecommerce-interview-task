@@ -3,7 +3,7 @@ import GetProductViewVue from "@/views/GetProductView.vue";
 import AddProductVue from "@/views/AddProduct.vue";
 import GetOneProductView from "@/views/GetOneProduct.vue";
 import Cart from "@/views/Cart.vue";
-import modal from "@/components/modal.vue";
+import modal from "@/components/Modal.vue";
 import PageNotFoundVue from "@/views/PageNotFound.vue";
 const routes = [
   {
