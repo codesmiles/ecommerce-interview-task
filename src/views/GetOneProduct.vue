@@ -58,7 +58,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import ModalVue from "@/components/Modal.vue";
+import ModalVue from "../components/Modal.vue";
 
 export default {
   name: "GetOneProduct",
