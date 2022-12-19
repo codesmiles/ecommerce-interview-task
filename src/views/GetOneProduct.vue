@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- MODAL -->
-    <ModalVue
+    <ModalCompVue
       :title="Notification.title"
       :content="Notification.message"
       :isOpen="Notification.show"
@@ -58,13 +58,13 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import ModalVue from "@components/Modal.vue";
+import ModalCompVue from "../components/ModalComp.vue"
 
 export default {
   name: "GetOneProduct",
-  // components: {
-  //   ModalVue,
-  // },
+  components: {
+    ModalCompVue,
+  },
   data() {
     return {
       singleProduct: {},

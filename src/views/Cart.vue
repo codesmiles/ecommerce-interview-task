@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "Cart",
   data() {
@@ -37,13 +37,11 @@ export default {
   methods: {
     removeItem(index) {
       this.$store.commit("REMOVE_FROM_CART", index);
-      // console.log(index)
     },
   },
   computed: {
     ...mapState({
       cart: (state) => state.cart,
-      
     }),
   },
 };

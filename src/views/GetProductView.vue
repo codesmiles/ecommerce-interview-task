@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- MODAL -->
-    <Modal
+    <ModalCompVue
       :title="Notification.title"
       :content="Notification.message"
       :isOpen="Notification.show"
@@ -110,11 +110,11 @@
 <script>
 import { mapState } from "vuex";
 import { ref } from "vue";
-import Modal from "@components/Modal.vue";
+import ModalCompVue from "@/components/ModalComp.vue";
 
 export default {
   name: "all-products",
-  components: { Modal },
+  components: { ModalCompVue },
   data() {
     return {
       url: `https://fakestoreapi.com/products`,
