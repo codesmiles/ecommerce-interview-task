@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- MODAL -->
-    <!-- <Modal
+    <Modal
       :title="Notification.title"
       :content="Notification.message"
       :isOpen="Notification.show"
       @toggle="toggleModal"
-    /> -->
+    />
     <!-- MODAL -->
 
     <div class="w-4/5 mx-auto">
@@ -110,11 +110,11 @@
 <script>
 import { mapState } from "vuex";
 import { ref } from "vue";
-// import Modal from "@/components/Modal.vue";
+import Modal from "@/components/Modal.vue";
 
 export default {
   name: "all-products",
-  // components: { Modal },
+  components: { Modal },
   data() {
     return {
       url: `https://fakestoreapi.com/products`,
@@ -141,9 +141,9 @@ export default {
     searchProducts() {
       this.$store.commit("SEARCH_PRODUCTS", this.search);
     },
-    // toggleModal() {
-    //   this.Notification.show = !this.Notification.show;
-    // },
+    toggleModal() {
+      this.Notification.show = !this.Notification.show;
+    },
   },
   computed: {
     ...mapState({
