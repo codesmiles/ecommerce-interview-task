@@ -110,7 +110,7 @@
 <script>
 import { mapState } from "vuex";
 import { ref } from "vue";
-import Modal from "@/components/Modal.vue";
+import Modal from "@components/Modal.vue";
 
 export default {
   name: "all-products",

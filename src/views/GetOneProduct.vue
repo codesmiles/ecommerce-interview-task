@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- MODAL -->
-    <!-- <ModalVue
+    <ModalVue
       :title="Notification.title"
       :content="Notification.message"
       :isOpen="Notification.show"
       @toggle="toggleModal"
-    /> -->
+    />
     <!-- MODAL -->
 
     <!-- display single product -->
@@ -58,7 +58,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
-// import ModalVue from "../components/Modal.vue";
+import ModalVue from "@components/Modal.vue";
 
 export default {
   name: "GetOneProduct",
@@ -88,9 +88,9 @@ export default {
     handleCart(productId) {
       this.$store.commit("ADD_TO_CART", productId);
     },
-    // toggleModal() {
-    //   this.Notification.show = !this.Notification.show;
-    // },
+    toggleModal() {
+      this.Notification.show = !this.Notification.show;
+    },
   },
 };
 </script>
