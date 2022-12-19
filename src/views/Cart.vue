@@ -24,6 +24,7 @@
         <p class="text-normal font-bold">
           {{ item.title }}
         </p>
+        
         <p class="text-2xl font-bold uppercase justify-self-center">
           $ {{ item.price }}
         </p>
@@ -64,4 +65,4 @@ export default {
   },
 };
 </script>
-<style></style>
+

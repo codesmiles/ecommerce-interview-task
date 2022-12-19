@@ -34,16 +34,11 @@ export default createStore({
         state.Notification.show=true;
         state.Notification.title="SUCCESS";
         state.Notification.message="Item added to cart";
-
-       
-
       }
       else {
         state.Notification.show=true;
         state.Notification.title="ERROR";
-        state.Notification.message="Item already in cart";
-
-       
+        state.Notification.message="Item already in cart";       
       }
     },
     SEARCH_PRODUCTS(state, search) {
