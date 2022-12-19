@@ -30,7 +30,7 @@
           </div>
           <div v-else>
             <p class="flex justify-center font-light text-red-400 text-xs my-2">
-              double click to remove items
+              double click/tap to remove items
             </p>
 
             <div

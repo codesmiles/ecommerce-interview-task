@@ -6,11 +6,11 @@ export default createStore({
     // 1. Create a state variable to hold the products
     products: [], //IMPORTANT
     cart: [],
-    Notification:{
-      show:false,
-      title:"",
-      message:""
-    }
+    Notification: {
+      show: false,
+      title: "",
+      message: "",
+    },
   },
   getters: {},
   mutations: {
@@ -27,18 +27,17 @@ export default createStore({
       );
 
       const exists = state.cart.some((item) => item.id === singleProduct);
-      
-      if(!exists||state.cart.length===0) {
+
+      if (!exists || state.cart.length === 0) {
         state.cart.push(singleItem[0]);
 
-        state.Notification.show=true;
-        state.Notification.title="SUCCESS";
-        state.Notification.message="Item added to cart";
-      }
-      else {
-        state.Notification.show=true;
-        state.Notification.title="ERROR";
-        state.Notification.message="Item already in cart";       
+        state.Notification.show = true;
+        state.Notification.title = "SUCCESS";
+        state.Notification.message = "Item added to cart";
+      } else {
+        state.Notification.show = true;
+        state.Notification.title = "ERROR";
+        state.Notification.message = "Item already in cart";
       }
     },
     SEARCH_PRODUCTS(state, search) {
@@ -55,11 +54,9 @@ export default createStore({
     },
     REMOVE_FROM_CART(state, index) {
       state.cart = state.cart.filter((item, i) => i !== index);
-      state.Notification.show=true;
-      state.Notification.title="SUCCESS";
-      state.Notification.message="Item removed from cart";
-      
-     
+      state.Notification.show = true;
+      state.Notification.title = "SUCCESS";
+      state.Notification.message = "Item removed from cart";
     },
   },
   actions: {

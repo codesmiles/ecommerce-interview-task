@@ -24,7 +24,7 @@
         <p class="text-normal font-bold">
           {{ item.title }}
         </p>
-        
+
         <p class="text-2xl font-bold uppercase justify-self-center">
           $ {{ item.price }}
         </p>
@@ -34,6 +34,17 @@
         >
           &#10060; remove
         </p>
+      </div>
+    </div>
+    <div class="w-4/5 mx-auto">
+      <hr class="font-black "/>
+      <div class="grid grid-cols-3 text-2xl font-bold uppercase ">
+        <span>
+          Total:
+        </span>
+        <span class="justify-self-center">
+          $ {{ cart.reduce((acc, item) => acc + item.price, 0)}}
+        </span>
       </div>
     </div>
   </div>
