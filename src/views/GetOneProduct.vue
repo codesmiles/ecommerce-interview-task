@@ -17,15 +17,15 @@
         ><span class="text-3xl">&#8678;</span>go back</router-link
       >
 
-      <div class="flex flex-wrap -mx-4">
-        <div class="w-1/2 px-4 mb-10">
+      <div class="md:flex md:flex-wrap -mx-4">
+        <div class="w-4/5 md:w-1/2 px-4 mb-10 mx-auto">
           <img
-            class="w-full h-auto"
+            class="w-2/3 h-auto mx-auto"
             :src="singleProduct.image"
             alt="product image"
           />
         </div>
-        <div class="w-1/2 px-4 mb-10">
+        <div class="text-center md:text-left w-4/5 md:w-1/2 px-4 mb-10 mx-auto">
           <div class="mb-5">
             <h1 class="text-2xl font-semibold mb-2">
               {{ singleProduct.title }}
@@ -34,7 +34,7 @@
           </div>
           <div class="mb-5">
             <h1 class="text-2xl font-semibold mb-2">
-              ${{ singleProduct.price }}
+              Price: ${{ singleProduct.price }}
             </h1>
           </div>
           <div class="mb-5">
@@ -51,7 +51,7 @@
             </button>
           </div>
         </div>
-        -->
+        
       </div>
     </div>
   </div>
