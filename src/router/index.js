@@ -3,7 +3,7 @@ import GetProductViewVue from "@/views/GetProductView.vue";
 import GetOneProductView from "@/views/GetOneProduct.vue";
 import Cart from "@/views/Cart.vue";
 import PageNotFoundVue from "@/views/PageNotFound.vue";
-import ModalVue from "@/components/Modal.vue";
+// import ModalVue from "@/components/Modal.vue";
 const routes = [
   {
     path: "/",
@@ -17,12 +17,12 @@ const routes = [
     // props: true,
     component: Cart,
   },
-  {
-    path: "/modal",
-    name: "modal",
-    props: true,
-    component: ModalVue,
-  },
+  // {
+  //   path: "/modal",
+  //   name: "modal",
+  //   props: true,
+  //   component: ModalVue,
+  // },
   {
     path: "/product/:id",
     name: "singleProduct",
