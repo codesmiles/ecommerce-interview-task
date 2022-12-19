@@ -46,7 +46,7 @@
               >
             </p>
             <div class="flex items-center my-2.5">
-              <span class="text-lg font-bold tracking-tight text-gray-900">
+              <span class="text-lg font-bold tracking-tight text-gray-700 dark:text-white">
                 Rating:
               </span>
               <svg
@@ -68,14 +68,14 @@
               }}</span>
             </div>
             <div class="capitalize my-3">
-              <span class="text-lg font-bold tracking-tight text-gray-900"
+              <span class="text-lg font-bold tracking-tight text-gray-700 dark:text-white"
                 >Category: </span
               >{{ product.category }}
             </div>
 
             <div class="flex justify-between">
               <p>
-                <b class="text-lg font-bold tracking-tight text-gray-900"
+                <b class="text-lg font-bold tracking-tight text-gray-700 dark:text-white"
                   >Price: </b
                 >${{ product.price }}
               </p>
