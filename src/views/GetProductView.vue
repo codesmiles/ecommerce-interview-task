@@ -67,8 +67,8 @@
                 product.rating.rate
               }}</span>
             </div>
-            <div class="capitalize my-3 dark:text-white">
-              <span class="text-lg font-bold tracking-tight text-gray-700 "
+            <div class="capitalize my-3 text-gray-700 dark:text-white ">
+              <span class="text-lg font-bold tracking-tight "
                 >Category: </span
               >{{ product.category }}
             </div>
