@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: "/:catchAll(.*)",
-    name: "PageNotFound",
+    name: "404",
     component: PageNotFoundVue,
   }
 ];

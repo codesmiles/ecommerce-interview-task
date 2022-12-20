@@ -51,14 +51,13 @@
             </button>
           </div>
         </div>
-        
       </div>
     </div>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
-import ModalCompVue from "../components/ModalComp.vue"
+import ModalCompVue from "../components/ModalComp.vue";
 
 export default {
   name: "GetOneProduct",
@@ -82,6 +81,9 @@ export default {
   methods: {
     fetchProduct() {
       const id = this.$route.params.id;
+      if (this.products.length === 0) {
+        this.$router.push("/404");
+      }
       const productData = this.products.filter((product) => product.id == id);
       this.singleProduct = productData[0];
     },

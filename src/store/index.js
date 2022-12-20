@@ -24,9 +24,12 @@ export default createStore({
     ADD_TO_CART(state, singleProduct) {
       const singleItem = state.products.filter(
         (item) => item.id === singleProduct
+
       );
 
       const exists = state.cart.some((item) => item.id === singleProduct);
+
+      
 
       if (!exists || state.cart.length === 0) {
         state.cart.push(singleItem[0]);
