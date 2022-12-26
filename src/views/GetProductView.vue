@@ -117,13 +117,12 @@ export default {
   components: { ModalCompVue },
   data() {
     return {
-      url: `https://fakestoreapi.com/products`,
-      search: ref(""),
+      search: "",
     };
   },
   mounted() {
     this.axios
-      .get(this.url)
+      .get(`https://fakestoreapi.com/products`)
       .then((res) => {
         // how to store asynchronous data in actions
         this.$store.dispatch("FETCH_AND_PUSH_PRODUCT", res.data);
