@@ -17,7 +17,7 @@ export default createStore({
     PUSH_PRODUCTS(state, product) {
       //IMPORTANT WITH THE PRICE MODIFIED
       product.forEach((p) => {
-        p.price = Math.round(p.price + (p.price * 2.2) / 100); // 2.2% increase
+        p.price = (p.price + (p.price * 2.2) / 100).toFixed(1); // 2.2% increase
       });
       state.products = product;
     },
@@ -36,11 +36,11 @@ export default createStore({
 
         state.Notification.show = true;
         state.Notification.title = "SUCCESS";
-        state.Notification.message = "Item added to cart";
+        state.Notification.message = "Product added to cart";
       } else {
         state.Notification.show = true;
         state.Notification.title = "ERROR";
-        state.Notification.message = "Item already in cart";
+        state.Notification.message = "Product already in cart";
       }
     },
     SEARCH_PRODUCTS(state, search) {
@@ -59,7 +59,7 @@ export default createStore({
       state.cart = state.cart.filter((item, i) => i !== index);
       state.Notification.show = true;
       state.Notification.title = "SUCCESS";
-      state.Notification.message = "Item removed from cart";
+      state.Notification.message = "Product removed from cart";
     },
   },
   actions: {
